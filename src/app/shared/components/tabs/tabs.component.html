@@ -1,0 +1,6 @@
+<span *ngFor="let tab of tabs"
+      class="tab"
+      [class.selected]="selectedTab === tab"
+      (click)="selectedTabChange.emit(tab)">
+    {{tab}}
+</span>

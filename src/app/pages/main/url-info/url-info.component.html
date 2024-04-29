@@ -1,0 +1,28 @@
+<div class="url-metrics">
+  <div class="url-metrics-score-list">
+    <div class="url-metrics-score-item">
+      <span class="url-metrics-score-label">Vulnerabilities</span>
+      <span class="url-metrics-score-value"
+            [class.error]="result.vulnerabilitiesCount > 0">{{ result.vulnerabilitiesCount }}</span>
+    </div>
+    <div class="url-metrics-score-item">
+      <span class="url-metrics-score-label">Traps</span>
+      <span class="url-metrics-score-value" [class.error]="result.trapCount > 0">{{ result.trapCount }}</span>
+    </div>
+    <div class="url-metrics-score-item">
+      <span class="url-metrics-score-label">Bad Code</span>
+      <span class="url-metrics-score-value"
+            [class.error]="result.codeQualityScore < 50">{{ result.codeQualityScore }}</span>
+    </div>
+  </div>
+
+  <canvas #chart></canvas>
+
+  <app-virus-table [scanData]="result.fileScanResults"/>
+
+  <div class="url-metrics-buttons">
+    <button mat-raised-button color="primary" (click)="downloadReport('docx')">Docx</button>
+
+    <button mat-raised-button color="accent" (click)="downloadReport('pdf')">Pdf</button>
+  </div>
+</div>

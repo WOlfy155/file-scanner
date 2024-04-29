@@ -1,0 +1,13 @@
+:host {
+  justify-content: center;
+  font-family: Manrope, sans-serif;
+  padding-top: 200px;
+  box-sizing: border-box;
+}
+
+.scanner{
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  width: 500px;
+}

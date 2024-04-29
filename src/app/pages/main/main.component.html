@@ -1,0 +1,7 @@
+<main class="scanner">
+  <app-tabs [tabs]="scannerTypes" [(selectedTab)]="selectedScannerType"></app-tabs>
+
+  <app-file-scanner *ngIf="selectedScannerType === 'File'"/>
+
+  <app-url-scanner *ngIf="selectedScannerType === 'Url'"/>
+</main>

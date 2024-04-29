@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #a8a7a7;
+}
+
+.tab {
+  font-weight: 700;
+  font-size: 32px;
+  color: #FFFFFF;
+  flex: 1;
+  text-align: center;
+  font-family: Manrope, sans-serif;
+  padding: 10px 20px;
+
+  &.selected {
+    border-bottom: 2px solid #ececec;
+  }
+}
+

@@ -1,0 +1,20 @@
+<form class="register-form" [formGroup]='registerFormGroup'>
+  <h1 class="register-form-header">Sign Up</h1>
+
+  <mat-form-field class="register-form-input">
+    <input matInput placeholder="login" formControlName="login">
+  </mat-form-field>
+  <mat-form-field class="register-form-input">
+    <input matInput placeholder="password" formControlName="password">
+  </mat-form-field>
+  <mat-form-field class="login-form-input">
+    <input matInput placeholder="confirm-password" formControlName="confirmPassword">
+  </mat-form-field>
+
+  <div class="register-form-error-message" *ngIf="registerFormGroup.errors?.['PasswordNoMatch']">
+    Passwords do not match
+  </div>
+
+  <button mat-flat-button color="primary" class="button " [disabled]="!registerFormGroup.valid" (click)="register()">sign up</button>
+
+</form>
