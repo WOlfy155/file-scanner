@@ -41,7 +41,39 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     trapCount: 0,
     codeQualityScore: 89,
     fileScanResults: this.fakeFileScan,
-    reportId: '6rvBcdg0CQb'
+    reportId: '6rvBcdg0CQb',
+    processNode:
+      {
+        label: 'Dolorconsectetur',
+        children: [
+          {
+            label: 'Adinceptos',
+            children: [
+              {
+                label: 'Etiamcurae',
+                children: []
+              },
+              {
+                label: 'Magnavestibulum',
+                children: []
+              },
+            ]
+          },
+          {
+            label: 'Idviverra',
+            children: [
+              {
+                label: 'Egestasjusto',
+                children: []
+              },
+              {
+                label: 'Quisqueadipiscing',
+                children: []
+              },
+            ]
+          }
+        ]
+      }
   };
 
 

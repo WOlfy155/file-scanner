@@ -4,12 +4,18 @@ import Chart from 'chart.js/auto';
 import { FileScanResult } from '../file-info/file-info.component';
 import { UrlScannerController } from '../../../shared/controllers/url-scanner-controller';
 
+export type ProcessNode = {
+  label: string,
+  children: ProcessNode[]
+}
+
 export type UrlScanResult = {
   vulnerabilitiesCount: number,
   trapCount: number,
   codeQualityScore: number,
   fileScanResults: FileScanResult[],
   reportId: string
+  processNode: ProcessNode
 }
 
 @Component({

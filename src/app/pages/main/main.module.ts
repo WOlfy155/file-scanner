@@ -14,6 +14,7 @@ import { FileScannerComponent } from './file-scanner/file-scanner.component';
 import { UrlScannerComponent } from './url-scanner/url-scanner.component';
 import {FormsModule} from '@angular/forms';
 import { VirusTableComponent } from './virus-table/virus-table.component';
+import { TreeComponent } from '../../shared/components/tree/tree.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { VirusTableComponent } from './virus-table/virus-table.component';
     MatIconModule,
     TabsComponent,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    TreeComponent
   ]
 })
 export class MainModule { }

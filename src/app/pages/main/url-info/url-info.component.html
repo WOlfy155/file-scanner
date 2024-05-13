@@ -18,6 +18,8 @@
 
   <canvas #chart></canvas>
 
+  <app-tree [root]="result.processNode"></app-tree>
+
   <app-virus-table [scanData]="result.fileScanResults"/>
 
   <div class="url-metrics-buttons">
