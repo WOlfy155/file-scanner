@@ -1,13 +1,10 @@
 .scanner-url {
   display: flex;
   flex-direction: column;
+  align-items: center;
   row-gap: 30px;
 }
 
 scanner-url-upload {
   font-family: Manrope, sans-serif;
-}
-
-.scanner-url-input {
-  width: 100%;
 }

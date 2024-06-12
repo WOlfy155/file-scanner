@@ -1,0 +1,16 @@
+:host {
+  position: relative;
+}
+
+.page-logo {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  top: calc(50vh - 300px);
+  left: -300px;
+  z-index: 1000;
+
+  path{
+    fill: #86aaf9;
+  }
+}
