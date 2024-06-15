@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {AuthService} from '../../../../shared/services/auth.service';
 import {Router} from '@angular/router';
@@ -11,7 +11,8 @@ function confirmPasswordValidator(control: AbstractControl): ValidationErrors | 
 @Component({
   selector: 'app-auth-register',
   templateUrl: './auth-register.component.html',
-  styleUrls: ['./auth-register.component.scss']
+  styleUrls: ['./auth-register.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthRegisterComponent {
   private authService = inject(AuthService);

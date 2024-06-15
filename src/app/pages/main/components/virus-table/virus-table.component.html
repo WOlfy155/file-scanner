@@ -1,0 +1,49 @@
+<table>
+  <thead>
+  <tr>
+    <td>Virus name</td>
+    <td>Present</td>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let item of scanData">
+    <td>{{ item.virusName }}</td>
+    <td>
+      <ng-container [ngTemplateOutlet]="item.present ? error : success"/>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<ng-template #error>
+  <div class="is-present">
+    <span class="is-present-label">Found</span>
+    <div class="is-present-icon">
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 50 50" xml:space="preserve">
+<circle style="fill:#D75A4A;" cx="25" cy="25" r="25"/>
+        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16
+	"/>
+        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34
+	"/>
+</svg>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #success>
+  <div class="is-present">
+    <span class="is-present-label">Not found</span>
+    <div class="is-present-icon">
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 50 50" xml:space="preserve">
+<circle style="fill:#25AE88;" cx="25" cy="25" r="25"/>
+        <polyline
+          style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;"
+          points="
+	38,15 22,33 12,25 "/>
+</svg>
+    </div>
+  </div>
+</ng-template>

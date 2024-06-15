@@ -61,7 +61,7 @@ export class TreeComponent implements AfterViewInit, OnDestroy {
         const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
 
         const markerId = `arrowhead-${arrowCount}`;
-        const arrowColor = '#645F5FFF';
+        const arrowColor = '#86aaf9';
 
         marker.setAttribute('markerWidth', '3');
         marker.setAttribute('markerHeight', '3');

@@ -3,25 +3,23 @@ import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
-import {MatButtonModule} from '@angular/material/button';
-import { FileInfoComponent } from './file-info/file-info.component';
-import {MatTableModule} from '@angular/material/table';
-import {MatIconModule} from '@angular/material/icon';
-import { UrlInfoComponent } from './url-info/url-info.component';
-import {TabsComponent} from '../../shared/components/tabs/tabs.component';
-import {MatInputModule} from '@angular/material/input';
-import { FileScannerComponent } from './file-scanner/file-scanner.component';
-import { UrlScannerComponent } from './url-scanner/url-scanner.component';
-import {FormsModule} from '@angular/forms';
-import { VirusTableComponent } from './virus-table/virus-table.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { ScanResultComponent } from './scan-result/scan-result.component';
+import { TabsComponent } from '../../shared/components/tabs/tabs.component';
+import { MatInputModule } from '@angular/material/input';
+import { FileScannerComponent } from './components/file-scanner/file-scanner.component';
+import { UrlScannerComponent } from './components/url-scanner/url-scanner.component';
+import { FormsModule } from '@angular/forms';
 import { TreeComponent } from '../../shared/components/tree/tree.component';
+import { VirusTableComponent } from './components/virus-table/virus-table.component';
 
 
 @NgModule({
   declarations: [
     MainComponent,
-    FileInfoComponent,
-    UrlInfoComponent,
+    ScanResultComponent,
     FileScannerComponent,
     UrlScannerComponent,
     VirusTableComponent
@@ -38,4 +36,5 @@ import { TreeComponent } from '../../shared/components/tree/tree.component';
     TreeComponent
   ]
 })
-export class MainModule { }
+export class MainModule {
+}

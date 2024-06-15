@@ -1,0 +1,36 @@
+:host {
+  table {
+    width: 100%;
+    border: 1px solid #3d4a69;
+    border-collapse: collapse;
+  }
+
+  td {
+    background: #161625;
+    color: #FFFFFF;
+    box-shadow: unset;
+    padding: 15px;
+  }
+
+  tr {
+    border-bottom: 2px solid #3d4a69;
+  }
+
+  thead {
+    font-weight: 700;
+    font-size: 18px;
+  }
+}
+
+.is-present {
+  display: flex;
+  column-gap: 10px;
+}
+
+.is-present-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

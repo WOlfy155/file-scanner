@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { FileScanResult } from '../pages/main/file-info/file-info.component';
-import { UrlScanResult } from '../pages/main/url-info/url-info.component';
+import { ScanResult } from '../pages/main/scan-result/scan-result.component';
+import { VirusScanResult } from '../pages/main/components/virus-table/virus-table.component';
 
 
 @Injectable()
@@ -15,17 +15,21 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     if (req.url.endsWith('scan-file')) {
-      return of(new HttpResponse({body: this.fakeFileScan}));
+      return of(new HttpResponse({body: (Math.random() * 1000000).toFixed()}));
     }
 
     if (req.url.endsWith('scan-url')) {
-      return of(new HttpResponse({body: this.fakeUrlScan}));
+      return of(new HttpResponse({body: (Math.random() * 1000000).toFixed()}));
+    }
+
+    if (req.url.includes('scan-result')) {
+      return of(new HttpResponse({body: this.fakeScan}));
     }
 
     return undefined;
   }
 
-  fakeFileScan: FileScanResult[] = [
+  fakeVirusScan: VirusScanResult[] = [
     {virusName: 'Mydoom', present: coinFlip()},
     {virusName: 'Sobig', present: coinFlip()},
     {virusName: 'Klez', present: coinFlip()},
@@ -36,11 +40,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     {virusName: 'Sasser', present: coinFlip()}
   ];
 
-  fakeUrlScan: UrlScanResult = {
+  fakeScan: ScanResult = {
     vulnerabilitiesCount: 10,
     trapCount: 0,
     codeQualityScore: 89,
-    fileScanResults: this.fakeFileScan,
+    fileScanResults: this.fakeVirusScan,
     reportId: '6rvBcdg0CQb',
     processNode:
       {

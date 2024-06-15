@@ -1,0 +1,52 @@
+<div class="scan-result-container">
+  <h1 class="scan-result-header">Scan results</h1>
+
+  <ng-container *ngIf="urlScanResult$ | async as urlScanResult; else loading">
+    <div class="scan-result-score">
+      <h3>Scores</h3>
+
+      <div class="scan-result-score-list">
+        <div class="scan-result-score-item">
+          <span class="scan-result-score-label">Vulnerabilities</span>
+          <span class="scan-result-score-value"
+                [class.error]="urlScanResult.vulnerabilitiesCount > 0">{{ urlScanResult.vulnerabilitiesCount }}</span>
+        </div>
+        <div class="scan-result-score-item">
+          <span class="scan-result-score-label">Traps</span>
+          <span class="scan-result-score-value"
+                [class.error]="urlScanResult.trapCount > 0">{{ urlScanResult.trapCount }}</span>
+        </div>
+        <div class="scan-result-score-item">
+          <span class="scan-result-score-label">Bad Code</span>
+          <span class="scan-result-score-value"
+                [class.error]="urlScanResult.codeQualityScore < 50">{{ urlScanResult.codeQualityScore }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scan-result-chart">
+      <h3>Chart</h3>
+      <canvas #chart></canvas>
+    </div>
+
+    <div class="scan-result-tree">
+      <h3>Tree</h3>
+      <app-tree [root]="urlScanResult.processNode"></app-tree>
+    </div>
+
+    <div class="scan-result-virus-table">
+      <h3>Viruses</h3>
+      <app-virus-table [scanData]="urlScanResult.fileScanResults"/>
+    </div>
+
+    <div class="scan-result-download-buttons">
+      <button mat-raised-button color="primary" (click)="downloadReport('docx')">Docx</button>
+      <button mat-raised-button color="accent" (click)="downloadReport('pdf')">Pdf</button>
+    </div>
+  </ng-container>
+
+</div>
+
+<ng-template #loading>
+  <div class="loading">Loading...</div>
+</ng-template>

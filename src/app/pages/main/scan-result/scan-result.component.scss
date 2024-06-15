@@ -1,0 +1,110 @@
+:host {
+  padding: 50px 200px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  font-family: Manrope, sans-serif;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+@mixin scan-result-item {
+  background: #2f3d5c;
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+  }
+}
+
+
+.scan-result-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  row-gap: 20px;
+}
+
+.scan-result-header {
+  @include scan-result-item;
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.scan-result-score {
+  @include scan-result-item;
+}
+
+.scan-result-score-list {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  column-gap: 100px;
+}
+
+.scan-result-score-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.scan-result-score-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.scan-result-score-value {
+  border: 10px solid #15D015FF;
+  color: #15D015FF;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Manrope, sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+
+  &.error {
+    border-color: #D00D0DFF;
+    color: #D00D0DFF;
+  }
+}
+
+.scan-result-chart {
+  @include scan-result-item;
+}
+
+.scan-result-tree {
+  @include scan-result-item;
+}
+
+.scan-result-virus-table {
+  @include scan-result-item;
+}
+
+.scan-result-download-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  column-gap: 25px;
+}
+
+app-tree {
+  width: 100%;
+}
+
+.loading {
+  color: #FFFFFF;
+}

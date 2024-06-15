@@ -1,31 +1,38 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { FileScanResult } from '../file-info/file-info.component';
-import { UrlScannerController } from '../../../shared/controllers/url-scanner-controller';
+import { defer, Observable, tap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { ScannerController } from '../../../shared/controllers/scanner-controller';
+import { VirusScanResult } from '../components/virus-table/virus-table.component';
 
 export type ProcessNode = {
   label: string,
   children: ProcessNode[]
 }
 
-export type UrlScanResult = {
+export type ScanResult = {
   vulnerabilitiesCount: number,
   trapCount: number,
   codeQualityScore: number,
-  fileScanResults: FileScanResult[],
+  fileScanResults: VirusScanResult[],
   reportId: string
   processNode: ProcessNode
 }
 
 @Component({
-  selector: 'app-url-info',
-  templateUrl: './url-info.component.html',
-  styleUrls: ['./url-info.component.scss']
+  selector: 'app-scan-result',
+  templateUrl: './scan-result.component.html',
+  styleUrls: ['./scan-result.component.scss'],
+  host: {
+    class: 'page'
+  },
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UrlInfoComponent {
-  public result: UrlScanResult = inject(MAT_DIALOG_DATA);
-  private controller = inject(UrlScannerController);
+export class ScanResultComponent {
+  private route = inject(ActivatedRoute);
+  private controller = inject(ScannerController);
+
+  urlScanResult$: Observable<ScanResult> = defer(() => this.controller.loadScanResult(this.route.snapshot.params?.['id']));
 
   @ViewChild('chart') set chart(value: ElementRef<HTMLCanvasElement>) {
     const ctx = value.nativeElement.getContext('2d');

@@ -1,20 +1,29 @@
-import { AfterViewInit, Component, ElementRef, inject, OnDestroy, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { FileScannerController } from '../../../shared/controllers/file-scanner-controller';
-import { SubSink } from '../../../utils/rx-js-utils';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  inject,
+  OnDestroy,
+  ViewChild
+} from '@angular/core';
+import { ScannerController } from '../../../../shared/controllers/scanner-controller';
+import { SubSink } from '../../../../utils/rx-js-utils';
 import { fromEvent, switchMap, tap } from 'rxjs';
-import { FileInfoComponent, FileScanResult } from '../file-info/file-info.component';
+import { Router } from '@angular/router';
+import { SCAN_RESULT_PAGE } from '../../main-routing.module';
 
 @Component({
   selector: 'app-file-scanner',
   templateUrl: './file-scanner.component.html',
-  styleUrls: ['./file-scanner.component.scss']
+  styleUrls: ['./file-scanner.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FileScannerComponent implements AfterViewInit, OnDestroy {
   @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
 
-  private dialog = inject(MatDialog);
-  private fileScannerController = inject(FileScannerController);
+  private router = inject(Router);
+  private fileScannerController = inject(ScannerController);
 
   private subs = new SubSink();
 
@@ -22,7 +31,7 @@ export class FileScannerComponent implements AfterViewInit, OnDestroy {
     this.subs.sink = fromEvent(this.fileInput.nativeElement, 'change').pipe(
       switchMap((ev: any) => this.toBase64(ev.target.files[0])),
       switchMap((base64: string) => this.fileScannerController.uploadFile(base64)),
-      tap((scanResults) => this.openDialog(scanResults)),
+      tap((id) => this.goToFileInfo(id)),
     ).subscribe();
   }
 
@@ -30,8 +39,8 @@ export class FileScannerComponent implements AfterViewInit, OnDestroy {
     this.subs.unsubscribe();
   }
 
-  openDialog(scanResults: FileScanResult[]) {
-    this.dialog.open(FileInfoComponent, {width: '80vw', data: scanResults});
+  private goToFileInfo(id: string) {
+    this.router.navigate([SCAN_RESULT_PAGE(id)]);
   }
 
   private toBase64 = (file: File) => new Promise<string>((resolve, reject) => {

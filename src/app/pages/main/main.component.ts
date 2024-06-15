@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 export const allScannerTypes = ['File', 'Url'] as const;
 export type ScannerType = (typeof allScannerTypes)[number]
@@ -7,9 +7,10 @@ export type ScannerType = (typeof allScannerTypes)[number]
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
-  host: {class: 'page'}
+  host: {class: 'page'},
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainComponent {
   scannerTypes = allScannerTypes;
-  selectedScannerType: ScannerType = 'Url';
+  selectedScannerType: ScannerType = 'File';
 }
