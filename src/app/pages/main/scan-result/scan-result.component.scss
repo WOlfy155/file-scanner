@@ -1,5 +1,5 @@
 :host {
-  padding: 50px 200px;
+  padding: 50px 10%;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
@@ -21,6 +21,10 @@
     font-weight: 700;
     color: #FFFFFF;
     margin: 0;
+  }
+
+  >:not(h3) {
+    overflow: auto;
   }
 }
 
