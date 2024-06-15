@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IconsService } from './utils/icons.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,4 @@ import { IconsService } from './utils/icons.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  constructor(iconService: IconsService) {
-    iconService.init();
-  }
 }

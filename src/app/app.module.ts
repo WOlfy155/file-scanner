@@ -3,7 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './interceptors/token-interceptor';
@@ -18,7 +17,6 @@ import { TreeComponent } from './shared/components/tree/tree.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatDialogModule,
     AppRoutingModule,
     TreeComponent,
   ],

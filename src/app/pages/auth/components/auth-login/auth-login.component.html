@@ -1,14 +1,11 @@
 <form class="login-form" [formGroup]='loginFormGroup'>
 
-  <h1 class="login-form-header">Login</h1>
+  <h1 class="login-form-header">Log in</h1>
 
-  <mat-form-field class="login-form-input">
-    <input matInput placeholder="login" formControlName="login">
-  </mat-form-field>
-  <mat-form-field class="login-form-input">
-    <input matInput placeholder="password" formControlName="password">
-  </mat-form-field>
+  <input class="input-text" placeholder="login" formControlName="login">
+  <input class="input-text" placeholder="password" formControlName="password">
 
-  <button mat-flat-button color="primary" [disabled]="!loginFormGroup.valid" (click)="login()">login
+  <button class="button" [disabled]="!loginFormGroup.valid" (click)="login()">
+    log in
   </button>
 </form>

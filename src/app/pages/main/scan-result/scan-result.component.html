@@ -2,7 +2,7 @@
   <h1 class="scan-result-header">Scan results</h1>
 
   <ng-container *ngIf="urlScanResult$ | async as urlScanResult; else loading">
-    <div #scrollBlock class="block scan-result-score">
+    <div class="jump-in scan-result-score">
       <h3>Scores</h3>
 
       <div class="scan-result-score-list">
@@ -25,24 +25,34 @@
       </div>
     </div>
 
-    <div #scrollBlock class="block scan-result-chart">
+    <div class="jump-in scan-result-chart">
       <h3>Chart</h3>
       <canvas #chart></canvas>
     </div>
 
-    <div #scrollBlock class="block scan-result-tree">
-      <h3>Tree</h3>
-      <app-tree *ngIf="scrollBlock?.classList?.contains('appear')" [root]="urlScanResult.processNode"></app-tree>
-    </div>
+    @defer (on viewport) {
+      <div class="jump-in scan-result-tree">
+        <h3>Tree</h3>
+        <app-tree [root]="urlScanResult.processNode"></app-tree>
+      </div>
+    } @placeholder {
+      <span>Loading...</span>
+    }
 
-    <div #scrollBlock class="block scan-result-virus-table">
-      <h3>Viruses</h3>
-      <app-virus-table [scanData]="urlScanResult.fileScanResults"/>
-    </div>
+    @defer (on viewport) {
+      <div class="jump-in scan-result-virus-table">
+        <h3>Viruses</h3>
+        <app-virus-table [scanData]="urlScanResult.fileScanResults"/>
+      </div>
+    } @placeholder {
+      <div>Loading...</div>
+    }
 
-    <div class="scan-result-download-buttons">
-      <button mat-raised-button color="primary" (click)="downloadReport('docx')">Docx</button>
-      <button mat-raised-button color="accent" (click)="downloadReport('pdf')">Pdf</button>
+
+    <div class="scan-result-download">
+      <span>Download report: </span>
+      <a (click)="$event.preventDefault(); downloadReport('docx')">pdf</a>
+      <a (click)="$event.preventDefault(); downloadReport('pdf')">docx</a>
     </div>
   </ng-container>
 

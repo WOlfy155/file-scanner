@@ -1,14 +1,6 @@
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef,
-  Component,
-  ElementRef,
-  inject,
-  QueryList,
-  ViewChild,
-  ViewChildren
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { defer, Observable, tap } from 'rxjs';
+import { defer, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ScannerController } from '../../../shared/controllers/scanner-controller';
 import { VirusScanResult } from '../components/virus-table/virus-table.component';
@@ -39,23 +31,8 @@ export type ScanResult = {
 export class ScanResultComponent {
   private route = inject(ActivatedRoute);
   private controller = inject(ScannerController);
-  private cdr = inject(ChangeDetectorRef);
 
   urlScanResult$: Observable<ScanResult> = defer(() => this.controller.loadScanResult(this.route.snapshot.params?.['id']));
-
-  private scrollObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('appear');
-        this.cdr?.markForCheck();
-        return;
-      }
-    });
-  });
-
-  @ViewChildren('scrollBlock', {read: ElementRef}) set scrollBlocks(blocks: QueryList<ElementRef<HTMLElement>>) {
-    blocks.forEach(block => this.scrollObserver.observe(block.nativeElement));
-  }
 
   @ViewChild('chart') set chart(value: ElementRef<HTMLCanvasElement>) {
     const ctx = value.nativeElement.getContext('2d');

@@ -1,9 +1,19 @@
+.auth-banner-logo {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  top: calc(50vh - 300px);
+  left: -300px;
+  z-index: 1000;
+}
+
 .auth-banner {
   height: 100%;
   width: 70%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .auth-form {
@@ -15,8 +25,7 @@
   flex-direction: column;
   row-gap: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
   font-family: Manrope, sans-serif;
-  background-color: #EEEEEE;
+  background-color: #232c42;
+  color: #ffffff;
 }

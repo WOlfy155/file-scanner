@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "assets/fonts/manrope/font-styles.css";
-@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "assets/fonts/roboto/font-styles.css";
 
 html, body {
   width: 100%;
@@ -23,10 +23,10 @@ html, body {
   border-radius: 12px;
   min-height: 40px;
 
-  font-family: Manrope sans-serif;
+  font-family: Roboto  sans-serif;
   color: #86aaf9;
+  font-weight: bold;
 
-  font-weight: 500;
   border: 1px solid #86aaf9;
   cursor: pointer;
   background: transparent;
@@ -82,13 +82,27 @@ html, body {
   }
 }
 
+@keyframes jumpIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(150px);
+    transform: translateY(150px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
 .fade-in {
   opacity: 0;
-  animation: fadeIn 0.5s ease-in;
+  animation: fadeIn 0.5s ease-in forwards;
   animation-delay: calc(0.5s * var(--fade-in-delay, 0));
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-fill-mode: forwards;
-  -o-animation-fill-mode: forwards;
-  -ms-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+}
+
+.jump-in{
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  animation: jumpIn 0.5s ease-in forwards;
 }

@@ -102,11 +102,17 @@
   @include scan-result-item;
 }
 
-.scan-result-download-buttons {
+.scan-result-download {
   width: 100%;
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: flex-end;
   column-gap: 25px;
+  color: #86aaf9;
+
+  a {
+    cursor: pointer;
+    border-bottom: 1px solid #86aaf9;
+  }
 }
 
 app-tree {
