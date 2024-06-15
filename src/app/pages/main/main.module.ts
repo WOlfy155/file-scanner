@@ -14,6 +14,7 @@ import { UrlScannerComponent } from './components/url-scanner/url-scanner.compon
 import { FormsModule } from '@angular/forms';
 import { TreeComponent } from '../../shared/components/tree/tree.component';
 import { VirusTableComponent } from './components/virus-table/virus-table.component';
+import { ScoreComponent } from '../../shared/components/score/score.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { VirusTableComponent } from './components/virus-table/virus-table.compon
     TabsComponent,
     MatInputModule,
     FormsModule,
-    TreeComponent
+    TreeComponent,
+    ScoreComponent
   ]
 })
 export class MainModule {

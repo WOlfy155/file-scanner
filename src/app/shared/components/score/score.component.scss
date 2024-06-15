@@ -1,0 +1,28 @@
+.score {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.score-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--score-color, #FFFFFF);
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.score-circle {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: stroke 4s ease-out forwards;
+  stroke: var(--score-color, #FFFFFF);;
+}
+
+@keyframes stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

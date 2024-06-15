@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './interceptors/token-interceptor';
 import {FakeBackendInterceptor} from './interceptors/fake-backend-interceptor.service';
+import { TreeComponent } from './shared/components/tree/tree.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {FakeBackendInterceptor} from './interceptors/fake-backend-interceptor.se
     HttpClientModule,
     MatDialogModule,
     AppRoutingModule,
+    TreeComponent,
   ],
   providers: [
     {

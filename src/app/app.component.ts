@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {IconsService} from './utils/icons.service';
+import { IconsService } from './utils/icons.service';
 
 @Component({
   selector: 'app-root',

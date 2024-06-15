@@ -1,18 +1,18 @@
 <ng-container
   [ngTemplateOutlet]="nodeTemplate"
-  [ngTemplateOutletContext]="{$implicit: root}"
+  [ngTemplateOutletContext]="{$implicit: root, level: 0}"
 />
 
 <svg #drawLayer class="draw-layer" width="1200" height="1200"></svg>
 
-<ng-template #nodeTemplate let-node>
-  <div class="tree-node">
+<ng-template #nodeTemplate let-node let-level = 'level'>
+  <div class="tree-node fade-in" [style.--fade-in-delay]="level">
     <span class="tree-node-label">{{ node.label }}</span>
     <div *ngIf="node.children" class="tree-node-children">
       <ng-container
         *ngFor="let childNode of node.children"
         [ngTemplateOutlet]="nodeTemplate"
-        [ngTemplateOutletContext]="{$implicit: childNode}"
+        [ngTemplateOutletContext]="{$implicit: childNode, level: level + 1}"
       ></ng-container>
     </div>
   </div>

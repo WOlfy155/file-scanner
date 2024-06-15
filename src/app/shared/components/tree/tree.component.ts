@@ -84,6 +84,8 @@ export class TreeComponent implements AfterViewInit, OnDestroy {
         line.setAttribute('marker-end', `url(#${markerId})`);
 
         line.setAttribute('style', `stroke-width: 2px; stroke: ${arrowColor};`);
+        line.style.setProperty('--fade-in-delay', (Number(element?.style?.getPropertyValue('--fade-in-delay')) + 1).toFixed());
+        line.classList.add('fade-in');
 
         self.renderer.appendChild(self.drawLayer.nativeElement, marker);
         self.renderer.appendChild(self.drawLayer.nativeElement, line);

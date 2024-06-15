@@ -2,39 +2,40 @@
   <h1 class="scan-result-header">Scan results</h1>
 
   <ng-container *ngIf="urlScanResult$ | async as urlScanResult; else loading">
-    <div class="scan-result-score">
+    <div #scrollBlock class="block scan-result-score">
       <h3>Scores</h3>
 
       <div class="scan-result-score-list">
         <div class="scan-result-score-item">
           <span class="scan-result-score-label">Vulnerabilities</span>
-          <span class="scan-result-score-value"
-                [class.error]="urlScanResult.vulnerabilitiesCount > 0">{{ urlScanResult.vulnerabilitiesCount }}</span>
+          <app-score [score]="urlScanResult?.vulnerabilitiesCount"
+                     [color]="urlScanResult?.vulnerabilitiesCount > 0 ? '#D00D0DFF' : '#15D015FF'"/>
         </div>
         <div class="scan-result-score-item">
           <span class="scan-result-score-label">Traps</span>
-          <span class="scan-result-score-value"
-                [class.error]="urlScanResult.trapCount > 0">{{ urlScanResult.trapCount }}</span>
+          <app-score [score]="urlScanResult.trapCount"
+                     [color]="urlScanResult.trapCount > 0 ? '#D00D0DFF' : '#15D015FF'"/>
         </div>
         <div class="scan-result-score-item">
           <span class="scan-result-score-label">Bad Code</span>
-          <span class="scan-result-score-value"
-                [class.error]="urlScanResult.codeQualityScore < 50">{{ urlScanResult.codeQualityScore }}</span>
+
+          <app-score [score]="urlScanResult.codeQualityScore"
+                     [color]="urlScanResult.codeQualityScore < 50 ? '#D00D0DFF' : '#15D015FF'"/>
         </div>
       </div>
     </div>
 
-    <div class="scan-result-chart">
+    <div #scrollBlock class="block scan-result-chart">
       <h3>Chart</h3>
       <canvas #chart></canvas>
     </div>
 
-    <div class="scan-result-tree">
+    <div #scrollBlock class="block scan-result-tree">
       <h3>Tree</h3>
-      <app-tree [root]="urlScanResult.processNode"></app-tree>
+      <app-tree *ngIf="scrollBlock?.classList?.contains('appear')" [root]="urlScanResult.processNode"></app-tree>
     </div>
 
-    <div class="scan-result-virus-table">
+    <div #scrollBlock class="block scan-result-virus-table">
       <h3>Viruses</h3>
       <app-virus-table [scanData]="urlScanResult.fileScanResults"/>
     </div>
