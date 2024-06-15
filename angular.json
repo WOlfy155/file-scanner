@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "file-scanner:build:production"
+              "buildTarget": "file-scanner:build:production"
             },
             "development": {
-              "browserTarget": "file-scanner:build:development"
+              "buildTarget": "file-scanner:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "file-scanner:build"
+            "buildTarget": "file-scanner:build"
           }
         },
         "test": {
