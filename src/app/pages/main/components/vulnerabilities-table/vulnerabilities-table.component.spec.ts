@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VirusTableComponent } from './virus-table.component';
+import { VulnerabilitiesTableComponent } from './vulnerabilities-table.component';
 
 describe('VirusTableComponent', () => {
-  let component: VirusTableComponent;
-  let fixture: ComponentFixture<VirusTableComponent>;
+  let component: VulnerabilitiesTableComponent;
+  let fixture: ComponentFixture<VulnerabilitiesTableComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [VirusTableComponent]
+      declarations: [VulnerabilitiesTableComponent]
     });
-    fixture = TestBed.createComponent(VirusTableComponent);
+    fixture = TestBed.createComponent(VulnerabilitiesTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

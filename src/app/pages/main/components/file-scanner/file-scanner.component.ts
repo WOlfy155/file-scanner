@@ -7,11 +7,11 @@ import {
   OnDestroy,
   ViewChild
 } from '@angular/core';
-import { ScannerController } from '../../../../shared/controllers/scanner-controller';
 import { SubSink } from '../../../../utils/rx-js-utils';
 import { fromEvent, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { SCAN_RESULT_PAGE } from '../../main-routing.module';
+import { FILE_SCAN_RESULT_PAGE } from '../../main-routing.module';
+import { FileScannerController } from '../../../../shared/controllers/file-scanner-controller';
 
 @Component({
   selector: 'app-file-scanner',
@@ -23,7 +23,7 @@ export class FileScannerComponent implements AfterViewInit, OnDestroy {
   @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
 
   private router = inject(Router);
-  private fileScannerController = inject(ScannerController);
+  private fileScannerController = inject(FileScannerController);
 
   private subs = new SubSink();
 
@@ -40,7 +40,7 @@ export class FileScannerComponent implements AfterViewInit, OnDestroy {
   }
 
   private goToFileInfo(id: string) {
-    this.router.navigate([SCAN_RESULT_PAGE(id)]);
+    this.router.navigate([FILE_SCAN_RESULT_PAGE(id)]);
   }
 
   private toBase64 = (file: File) => new Promise<string>((resolve, reject) => {

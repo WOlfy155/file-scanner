@@ -1,17 +1,12 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-export type VirusScanResult = {
-  virusName: string;
-  present: boolean;
-}
+import { Component, Input } from '@angular/core';
+import { FileScanResultData } from '../../main.types';
 
 @Component({
   selector: 'app-virus-table',
   templateUrl: './virus-table.component.html',
-  styleUrls: ['./virus-table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './virus-table.component.scss'
 })
 export class VirusTableComponent {
-  @Input() scanData: VirusScanResult[] = [];
-  columns: string[] = ['virusName', 'present'];
+  @Input() scanData: Record<string, FileScanResultData> = {};
+  protected readonly Object = Object;
 }

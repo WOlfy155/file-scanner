@@ -14,7 +14,7 @@ export type TreeNode = {
   styleUrls: ['./tree.component.scss']
 })
 export class TreeComponent implements AfterViewInit, OnDestroy {
-  @Input({required: true}) root: TreeNode;
+  @Input() root: TreeNode;
   @ViewChild('drawLayer') drawLayer: ElementRef<SVGElement>;
 
   private tree = inject(ElementRef<HTMLElement>);

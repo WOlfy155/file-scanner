@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ScanResultComponent } from './scan-result.component';
+import { UrlScanResultComponent } from './url-scan-result.component';
 
 describe('UrlScanComponent', () => {
-  let component: ScanResultComponent;
-  let fixture: ComponentFixture<ScanResultComponent>;
+  let component: UrlScanResultComponent;
+  let fixture: ComponentFixture<UrlScanResultComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ScanResultComponent]
+      declarations: [UrlScanResultComponent]
     });
-    fixture = TestBed.createComponent(ScanResultComponent);
+    fixture = TestBed.createComponent(UrlScanResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

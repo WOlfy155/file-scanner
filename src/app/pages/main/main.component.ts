@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
-export const allScannerTypes = ['File', 'Url'] as const;
-export type ScannerType = (typeof allScannerTypes)[number]
+import { allScannerTypes, ScannerType } from './main.types';
 
 @Component({
   selector: 'app-main',
